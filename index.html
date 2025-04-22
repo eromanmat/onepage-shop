@@ -16,7 +16,16 @@
     .quantity input { width: 50px; text-align: center; }
     .reviews { margin-top: 15px; font-size: 0.9rem; color: #555; }
     .stars { color: gold; }
-    .buy-btn { margin-top: 10px; padding: 10px 20px; background: grey; border: none; color: white; border-radius: 5px; cursor: not-allowed; }
+    .buttons { margin-top: 10px; }
+    .buy-btn, .cancel-btn {
+      padding: 10px 20px;
+      background: grey;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: not-allowed;
+    }
     footer { text-align: center; padding: 20px; background: #f1f1f1; font-size: 0.9rem; color: #555; }
   </style>
 </head>
@@ -38,9 +47,9 @@
   </header>
 
   <div class="product">
-    <img src="https://ae01.alicdn.com/kf/S1b1fc5930c6d4e3eaa309a55b72d8c58I.jpg" alt="Mini Vegetable Cutter">
+    <img src="https://images.unsplash.com/photo-1604908812372-9273f72fab0f?auto=format&fit=crop&w=500&q=80" alt="Mini Vegetable Cutter">
     <h2 class="name">Mini Vegetable Cutter</h2>
-    <p class="desc">Chops veggies easily, safe and convenient.</p>
+    <p class="desc">Manual vegetable cutter with stainless steel blades. Perfect for garlic, onions, nuts and more. Easy to clean and store.</p>
     <div class="price">$4.00 (supplier price)</div>
 
     <div class="quantity">
@@ -50,7 +59,10 @@
       <button onclick="changeQty(1, this)">+</button>
     </div>
 
-    <button class="buy-btn" disabled>Buy</button>
+    <div class="buttons">
+      <button class="buy-btn" disabled>Buy</button>
+      <button class="cancel-btn" disabled>Cancel</button>
+    </div>
 
     <div class="reviews">
       <div class="stars">★★★★★</div>
@@ -73,15 +85,36 @@
     document.getElementById('language').addEventListener('change', function () {
       const lang = this.value;
       const translations = {
-        en: { name: "Mini Vegetable Cutter", desc: "Chops veggies easily, safe and convenient.", buy: "Buy" },
-        de: { name: "Gemüseschneider", desc: "Schneidet Gemüse einfach, sicher und bequem.", buy: "Kaufen" },
-        es: { name: "Cortador de Verduras", desc: "Corta vegetales fácilmente, seguro y conveniente.", buy: "Comprar" },
-        pl: { name: "Krajalnica do warzyw", desc: "Łatwa i bezpieczna obróbka warzyw.", buy: "Kup" },
-        ua: { name: "Овочерізка", desc: "Легко ріже овочі, безпечно та зручно.", buy: "Купити" },
+        en: {
+          name: "Mini Vegetable Cutter",
+          desc: "Manual vegetable cutter with stainless steel blades. Perfect for garlic, onions, nuts and more. Easy to clean and store.",
+          buy: "Buy", cancel: "Cancel"
+        },
+        de: {
+          name: "Gemüseschneider",
+          desc: "Manueller Gemüseschneider aus Edelstahl. Ideal für Knoblauch, Zwiebeln, Nüsse. Einfach zu reinigen.",
+          buy: "Kaufen", cancel: "Abbrechen"
+        },
+        es: {
+          name: "Cortador de Verduras",
+          desc: "Cortador manual con cuchillas de acero inoxidable. Perfecto para ajo, cebolla, nueces. Fácil de limpiar.",
+          buy: "Comprar", cancel: "Cancelar"
+        },
+        pl: {
+          name: "Krajalnica do warzyw",
+          desc: "Ręczna krajalnica z ostrzami ze stali nierdzewnej. Idealna do czosnku, cebuli, orzechów. Łatwa do czyszczenia.",
+          buy: "Kup", cancel: "Anuluj"
+        },
+        ua: {
+          name: "Овочерізка",
+          desc: "Ручна овочерізка з лезами з нержавійки. Підходить для часнику, цибулі, горіхів. Легка у догляді.",
+          buy: "Купити", cancel: "Скасувати"
+        }
       };
       document.querySelector('.name').textContent = translations[lang].name;
       document.querySelector('.desc').textContent = translations[lang].desc;
       document.querySelector('.buy-btn').textContent = translations[lang].buy;
+      document.querySelector('.cancel-btn').textContent = translations[lang].cancel;
     });
   </script>
 </body>
